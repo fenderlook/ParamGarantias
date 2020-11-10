@@ -11,10 +11,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.*;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
-import co.com.claro.otpParameters.entity.PqrParameters;
 import co.com.claro.otpParameters.facade.ParameterOtpFacade;
-import co.com.claro.otpParameters.facade.PqrParametersIFacade;
 import co.com.claro.otpParameters.model.GenericResponse;
 import co.com.claro.otpParameters.model.ParameterResponse;
 import javax.ejb.Stateless;
@@ -43,12 +40,12 @@ public class OtpParametersService {
     public ParameterResponse queryParametersOTP() {
         ParameterResponse response = new ParameterResponse();
         try {
-            GenericResponse responseG = new GenericResponse("00", "OK", "OK");
+            GenericResponse responseG = new GenericResponse(true, "Transacción completa.");
             List<ParameterOtp> listado = parameterOTPFacade.findAll();
             response.setParameters(listado);
             response.setResponse(responseG);
         } catch (Exception e) {
-            GenericResponse responseG = new GenericResponse("99", "Error inesperado en la consulta.", "Error");
+            GenericResponse responseG = new GenericResponse(false, "Error inesperado en la consulta: " + e);
             response.setResponse(responseG);
         }
         return response;

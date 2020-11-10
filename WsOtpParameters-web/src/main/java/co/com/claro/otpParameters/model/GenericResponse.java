@@ -5,23 +5,19 @@ import lombok.Setter;
 
 public class GenericResponse {
 
-    @Getter @Setter
-    private String returnCode ;
-    @Getter @Setter
-    private String menssageCode;
-    @Getter @Setter
-    private String descripcionCode;
+    @Getter
+    @Setter
+    private Boolean isValid;
+    @Getter
+    @Setter
+    private String description;
 
     public GenericResponse() {
     }
 
-    public GenericResponse(String returnCode,
-                           String menssageCode,
-                           String descripcionCode) {
-        this.returnCode = returnCode;
-        this.menssageCode = menssageCode;
-        this.descripcionCode = descripcionCode;
+    public GenericResponse(Boolean isValid, String description) {
+        this.isValid = isValid;
+        this.description = description;
     }
-
 
 }

@@ -1,7 +1,6 @@
 package co.com.claro.otpParameters.model;
 
 import co.com.claro.otpParameters.entity.ParameterOtp;
-import co.com.claro.otpParameters.entity.PqrParameters;
 import java.util.List;
 import lombok.*;
 
