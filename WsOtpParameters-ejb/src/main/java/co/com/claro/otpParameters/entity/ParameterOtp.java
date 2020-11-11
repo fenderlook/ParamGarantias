@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -23,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "PARAMETER_OTP")
-@XmlRootElement
+@XmlRootElement(name = "ParameterOtp")
 @NamedQueries({
     @NamedQuery(name = "ParameterOtp.findAll", query = "SELECT p FROM ParameterOtp p")
     , @NamedQuery(name = "ParameterOtp.findByIdParameter", query = "SELECT p FROM ParameterOtp p WHERE p.idParameter = :idParameter")
@@ -39,15 +40,18 @@ public class ParameterOtp implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_PARAMETER")
+    @XmlElement(required = true)
     private Integer idParameter;
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_PARENTPARAMETER")
+    @XmlElement(required = true)
     private int idParentparameter;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 80)
     @Column(name = "NAME_PARAMETER")
+    @XmlElement(required = true)
     private String nameParameter;
     @Size(max = 80)
     @Column(name = "DESCRIPTION_PARAMETER")
